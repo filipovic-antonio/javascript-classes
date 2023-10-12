@@ -14,6 +14,7 @@ class User {
 }
 
 class Student extends User {
+    static MIN_GRADE_FOR_SCHOLARSHIP = 4;
     constructor(firstName, lastName, age, group, averageGrade) {
         super(firstName, lastName, age);
         this.group = group;
@@ -21,10 +22,7 @@ class Student extends User {
     }
     isEligibleForScholarship() {
         return this.averageGrade >= Student.MIN_GRADE_FOR_SCHOLARSHIP;
-    }
-    static get MIN_GRADE_FOR_SCHOLARSHIP() {
-        return 4;
-    }
+    } 
 }
 
 class Teacher extends User {
@@ -35,11 +33,8 @@ class Teacher extends User {
     }
 
     isGroupTeacher(group) {
-        if(this.teacherGroups.includes(group)) {
-            return true;      
-        } else {
-            return false;
-        }
+        return this.teacherGroups.includes(group);
+         
     }
 }
 
